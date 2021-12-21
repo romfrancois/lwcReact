@@ -1,0 +1,89 @@
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+import { createChart } from 'lightweight-charts';
+
+function App() {
+	const container = document.getElementById('container');
+	if (container === null) {
+		return (
+			<div className="App">
+			  <header className="App-header">
+				<img src={logo} className="App-logo" alt="logo" />
+				<p>
+				  Error in getting the root element!
+				</p>
+			  </header>
+			</div>
+		  );
+	}
+
+	const chart = createChart(container, {
+		rightPriceScale: {
+			visible: !true
+		}
+	});
+
+	const initialData = [
+		{ time: '2018-12-22', value: 32.51 },
+		{ time: '2018-12-23', value: 31.11 },
+		{ time: '2018-12-24', value: 27.02 },
+		{ time: '2018-12-25', value: 27.32 },
+		{ time: '2018-12-26', value: 25.17 },
+		{ time: '2018-12-27', value: 28.89 },
+		{ time: '2018-12-28', value: 25.46 },
+		{ time: '2018-12-29', value: 23.92 },
+		{ time: '2018-12-30', value: 22.68 },
+		{ time: '2018-12-31', value: 22.67 },
+	];
+
+	const areaSeries = chart.addAreaSeries();
+	areaSeries.setData(initialData);
+
+	const timing = 10000;
+
+	// Updating the data in a series
+	setTimeout(() => {
+		areaSeries.setData([
+			...initialData,
+			{ time: '2019-01-01', value: 32.51 },
+			{ time: '2019-01-02', value: 31.11 },
+			{ time: '2019-01-03', value: 27.02 },
+			{ time: '2019-01-04', value: 27.32 },
+			{ time: '2019-01-05', value: 25.17 },
+			{ time: '2019-01-06', value: 28.89 },
+			{ time: '2019-01-07', value: 25.46 },
+			{ time: '2019-01-08', value: 23.92 },
+			{ time: '2019-01-09', value: 22.68 },
+			{ time: '2019-01-10', value: 22.67 },
+		]);
+
+		areaSeries.update({ time: '2019-01-10', value: 22.67 });
+	}, timing);
+
+	setTimeout(() => {
+		let counter = 0;
+		const startTime = new Date().getTime();
+		const interval = setInterval(function(){
+			if(new Date().getTime() - startTime > timing){
+				clearInterval(interval);
+				return;
+			}
+			
+			areaSeries.update({ time: `2019-01-1${counter}`, value: Number(`${23 + counter}`) });
+			counter++;
+		}, 1000);  
+	}, timing);
+
+	setTimeout(() => {
+		areaSeries.applyOptions({
+			topColor: 'red',
+			bottomColor: 'green',
+		});
+	}, timing);
+
+	return <></>;
+}
+
+export default App;

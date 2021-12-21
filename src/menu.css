@@ -1,0 +1,13 @@
+menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 1em;
+}
+
+series {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
