@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/lwcReact/static/css/main.e1b11b1e.css",
+    "main.js": "/lwcReact/static/js/main.f256ba86.js",
+    "static/js/787.909678fa.chunk.js": "/lwcReact/static/js/787.909678fa.chunk.js",
+    "index.html": "/lwcReact/index.html",
+    "main.e1b11b1e.css.map": "/lwcReact/static/css/main.e1b11b1e.css.map",
+    "main.f256ba86.js.map": "/lwcReact/static/js/main.f256ba86.js.map",
+    "787.909678fa.chunk.js.map": "/lwcReact/static/js/787.909678fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1b11b1e.css",
+    "static/js/main.f256ba86.js"
+  ]
+}
